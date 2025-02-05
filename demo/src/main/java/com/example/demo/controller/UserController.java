@@ -53,12 +53,13 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public User updateUser(@PathVariable Long id, @RequestBody User userDetails) {
-        //TODO: process PUT request
-        return userService.updateUser(id, userDetails);
+    public String updateUser(@PathVariable Long id, @RequestBody User user) {
+        user.setId(id);
+        userService.createUser(user);
+        return "redirect:/users";
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}/delete")
     public String deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
         return "redirect:/users";
@@ -70,7 +71,7 @@ public class UserController {
         return "user-form";
     }
     
-    @GetMapping("/edit/{id}")
+    @GetMapping("/{id}/edit")
     public String showEditForm(@PathVariable Long id,Model model) {
         model.addAttribute("user", userService.getUserById(id));
         return "user-form";
