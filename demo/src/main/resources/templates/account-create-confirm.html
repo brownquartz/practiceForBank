@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Account Confirmation</title>
+</head>
+<body>
+    <h2>Create Account for User</h2>
+    <p>Are you sure you want to create an account for this user?</p>
+
+    <form th:action="@{/accounts/create}" method="post">
+        <input type="hidden" name="userId" th:value="${userId}">
+        <button type="submit">Create Account</button>
+    </form>
+
+    <a th:href="@{/users/{id}(id=${userId})}">Back to User Accounts</a>
+</body>
+</html>
