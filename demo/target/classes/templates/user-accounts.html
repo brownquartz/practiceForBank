@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Accounts</title>
+</head>
+<body>
+    <h2 th:text="${user.name} + ' Accounts'"></h2>
+
+    <ul>
+        <li th:each="account : ${accounts}">
+            <span th:text="${account.accountNumber}">Account Number</span>
+        </li>
+    </ul>
+
+    <!-- Create Account ボタン -->
+    <a th:href="@{/users/{id}/create-account(id=${user.id})}">Create Account</a>
+</body>
+</html>

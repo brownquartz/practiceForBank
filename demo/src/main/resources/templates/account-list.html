@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Account List</title>
+</head>
+<body>
+    <h2>Accounts for <span th:text="${user.name}"></span></h2>
+    <a th:href="@{/accounts/user/{id}/new(id=${user.id})}">Create New Account</a>
+    <table border="1">
+        <tr>
+            <th>Account Number</th>
+            <th>Balance</th>
+            <th>Actions</th>
+        </tr>
+        <tr th:each="account : ${accounts}">
+            <td th:text="${account.accountNumber}"></td>
+            <td th:text="${account.balance}"></td>
+            <td>
+                <a th:href="@{/accounts/{id}/edit(id=${account.id})}">Edit</a> |
+                <a th:href="@{/accounts/{id}/delete(id=${account.id})}" onclick="return confirm('Are you sure?')">Delete</a>
+            </td>
+        </tr>
+    </table>
+    <a href="/users">Back to Users</a>
+</body>
+</html>

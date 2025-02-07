@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Account Created</title>
+</head>
+<body>
+    <h2>Account Created Successfully</h2>
+    <p>Your new account number is: <span th:text="${account.accountNumber}"></span></p>
+
+    <a th:href="@{/users/{id}(id=${account.user.id})}">Back to User Accounts</a>
+</body>
+</html>
